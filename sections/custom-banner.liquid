@@ -1,0 +1,123 @@
+{{ 'custom-banner.css' | asset_url | stylesheet_tag }}
+
+<section class="custom-banner">
+  <header class="custom-banner__header">
+    <div class="custom-banner__logo">
+      {{ section.settings.logo_text }}
+    </div>
+
+    <p class="custom-banner__message">
+      {{ section.settings.header_message }}
+    </p>
+
+    <a
+      href="{{ section.settings.top_button_link }}"
+      class="custom-banner__top-button"
+    >
+      {{ section.settings.top_button_text }}
+      <span>→</span>
+    </a>
+  </header>
+
+  <div class="custom-banner__hero">
+    <div class="custom-banner__content">
+      <h1>
+        {{ section.settings.heading }}
+      </h1>
+
+      <p>
+        {{ section.settings.description }}
+      </p>
+
+      <a
+        href="{{ section.settings.main_button_link }}"
+        class="custom-banner__main-button"
+      >
+        {{ section.settings.main_button_text }}
+        <span>→</span>
+      </a>
+    </div>
+
+    {% if section.settings.hero_image != blank %}
+      <img
+        src="{{ section.settings.hero_image | image_url: width: 2000 }}"
+        alt="{{ section.settings.heading }}"
+        class="custom-banner__image"
+      >
+    {% endif %}
+  </div>
+
+  <div class="custom-banner__announcement">
+    {{ section.settings.announcement_text }}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom Gift Banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo text",
+      "default": "TISSO VISON"
+    },
+    {
+      "type": "text",
+      "id": "header_message",
+      "label": "Header message",
+      "default": "Find the ideal gift for your loved ones."
+    },
+    {
+      "type": "text",
+      "id": "top_button_text",
+      "label": "Top button text",
+      "default": "CHOOSE GIFT"
+    },
+    {
+      "type": "url",
+      "id": "top_button_link",
+      "label": "Top button link"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "The Gift Guide"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Discover joy: Your Ultimate Holiday Gift Destination."
+    },
+    {
+      "type": "text",
+      "id": "main_button_text",
+      "label": "Main button text",
+      "default": "SHOP NOW"
+    },
+    {
+      "type": "url",
+      "id": "main_button_link",
+      "label": "Main button link"
+    },
+    {
+      "type": "text",
+      "id": "announcement_text",
+      "label": "Announcement text",
+      "default": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Gift Banner"
+    }
+  ]
+}
+{% endschema %}
