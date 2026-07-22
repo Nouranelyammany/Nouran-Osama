@@ -16,40 +16,70 @@
         "logo_text": "TISSO VISON",
         "header_message": "Find the ideal gift for your loved ones.",
         "top_button_text": "CHOOSE GIFT",
-        "top_button_link": ""
+        "top_button_link": "",
+        "heading": "The Gift Guide",
+        "description": "Discover Joy: Your Ultimates Holiday Gift Destination",
+        "main_button_text": "SHOP NOW",
+        "main_button_link": "",
+        "announcement_text": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
       }
     },
-    "featured_collection": {
-      "type": "featured-collection",
+    "custom_product_grid_BtXTqx": {
+      "type": "custom-product_grid",
+      "blocks": {
+        "product_h43VFf": {
+          "type": "product",
+          "settings": {
+            "product": "black-leather-bag"
+          }
+        },
+        "product_AweVqM": {
+          "type": "product",
+          "settings": {
+            "product": "blue-silk-tuxedo"
+          }
+        },
+        "product_H9GUQW": {
+          "type": "product",
+          "settings": {
+            "product": "chequered-red-shirt"
+          }
+        },
+        "product_gDFMbi": {
+          "type": "product",
+          "settings": {
+            "product": "floral-white-top"
+          }
+        },
+        "product_mNcJFA": {
+          "type": "product",
+          "settings": {
+            "product": "classic-varsity-top"
+          }
+        },
+        "product_HpLg3j": {
+          "type": "product",
+          "settings": {
+            "product": "silk-summer-top"
+          }
+        }
+      },
+      "block_order": [
+        "product_h43VFf",
+        "product_AweVqM",
+        "product_H9GUQW",
+        "product_gDFMbi",
+        "product_mNcJFA",
+        "product_HpLg3j"
+      ],
+      "name": "Custom Product Grid",
       "settings": {
-        "collection": "all",
-        "products_to_show": 8,
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "columns_desktop": 4,
-        "enable_desktop_slider": false,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "color_scheme": "scheme-1",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 44,
-        "padding_bottom": 36
+        "title": "Tisso vison in the wild"
       }
     }
   },
   "order": [
     "custom_banner_hY7fd4",
-    "featured_collection"
+    "custom_product_grid_BtXTqx"
   ]
 }
