@@ -1,9 +1,14 @@
+
+
+/* Outer container for the custom product section */
+
 .custom-product-grid {
   padding: 80px 4%;
   max-width: 1200px;
   margin: 0 auto;
   box-sizing: border-box;
 }
+/* Section main heading styling */
 .custom-product-grid__title {
   font-family: Georgia, serif;
   font-size: 36px;
@@ -11,7 +16,7 @@
   margin-bottom: 30px;
   text-align: left;
 }
-
+/* Desktop layout: 3 columns grid with equal spacing */
 .custom-product-grid__items {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -19,13 +24,15 @@
   width: 100%;
 }
 
+
+/* Card wrapper component */
 .product-card {
   position: relative;
   width: 100%;
   min-width: 0;
   box-sizing: border-box;
 }
-
+/* Clickable trigger button wrapping the card media */
 .product-card__trigger {
   width: 100%;
   border: 0;
@@ -36,7 +43,7 @@
   display: block;
   overflow: hidden;
 }
-
+/* Card main product image with square aspect ratio */
 .product-card__image {
   display: block;
   width: 100%;
@@ -45,10 +52,11 @@
   transition: transform 0.3s ease;
 }
 
+/* Slight zoom effect on card image hover */
 .product-card__trigger:hover .product-card__image {
   transform: scale(1.02);
 }
-
+/* Floating "Quick Add" plus (+) icon badge on top right of image */
 .product-card__plus {
   position: absolute;
   top: 16px;
@@ -72,7 +80,9 @@
 .product-card__trigger:hover .product-card__plus {
   transform: scale(1.1);
 }
-/* Modal */
+
+
+/* Hidden modal container fixed over viewport */
 
 .product-modal {
   position: fixed;
@@ -81,7 +91,8 @@
   display: none;
   align-items: center;
   justify-content: center;
-}.product-modal.is-open {
+}
+.product-modal.is-open {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -93,6 +104,7 @@
   background: rgba(0, 0, 0, 0.25);
 }
 
+/* Main inner modal popup box */
 .product-modal__content {
   position: relative;
   z-index: 1;
@@ -156,6 +168,8 @@
 
 }
 
+
+/* Main "Add to Cart" button inside modal */
 .product-modal__add {
   width: 100%;
   padding: 16px;
@@ -324,12 +338,17 @@
     font-size: 16px;
     cursor: pointer;
 }
+
+
+/* Container wrapping all variant options inside modal */
 .product-modal__options {
   display: flex;
   flex-direction: column;
   gap: 15px;
   margin-bottom: 20px;
 }
+
+/* Reordering option rows visually using flex order */
 
 .modal-option-row:nth-child(1) {
     order: 2;
