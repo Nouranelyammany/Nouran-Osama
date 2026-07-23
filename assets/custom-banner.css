@@ -5,9 +5,9 @@
   font-family: inherit;
 }
 
-/* =========================
+/* 
    HEADER
-   ========================= */
+    */
 
 .custom-banner__header {
   min-height: 57px;
@@ -33,9 +33,9 @@
   color: #111111;
 }
 
-/* =========================
+/* 
    BUTTON BASE STYLES
-   ========================= */
+    */
 
 .custom-banner__top-button,
 .custom-banner__main-button {
@@ -55,9 +55,9 @@
   transform: translateX(3px);
 }
 
-/* =========================
+/* 
    TOP BUTTON
-   ========================= */
+    */
 
 .custom-banner__top-button {
   background-color: #fff000;
@@ -68,9 +68,9 @@
   font-size: 13px;
 }
 
-/* =========================
-   MAIN HERO SECTION
-   ========================= */
+/* 
+   Major Main SECTION
+    */
 
 .custom-banner__main {
   position: relative;
@@ -92,9 +92,9 @@
   z-index: 0;
 }
 
-/* =========================
-   DESKTOP HERO CONTENT
-   ========================= */
+/* 
+   DESKTOP Main CONTENT
+    */
 
 .custom-banner__content {
   position: relative;
@@ -103,20 +103,16 @@
   width: 100%;
   max-width: 600px;
 
-  /*
-    Moves the content to the right
-    without making the text area too narrow
-  */
-  margin-left: 10%;
+  margin-left: 9%;
 
   padding: 60px 40px;
   box-sizing: border-box;
    transform: translateY(90px);
 }
 
-/* =========================
-   HERO TITLE
-   ========================= */
+/* 
+   Main TITLE
+   */
 
 .custom-banner__content h1 {
   font-size: clamp(32px, 4vw, 55px);
@@ -127,9 +123,7 @@
   color: #000000;
 }
 
-/* =========================
-   HERO DESCRIPTION
-   ========================= */
+/* Main DESCRIPTION*/
 
 .custom-banner__content p {
   font-size: 14px;
@@ -168,15 +162,15 @@
 }
 
 
-/* =====================================================
+/* 
    MOBILE VIEW
-   ===================================================== */
+    */
 
 @media screen and (max-width: 749px) {
 
-  /* =========================
+  /* 
      MOBILE HEADER
-     ========================= */
+      */
 
   .custom-banner__header {
     min-height: auto;
@@ -207,9 +201,9 @@
   }
 
 
-  /* =========================
+  /* 
      MOBILE HERO
-     ========================= */
+      */
 
   .custom-banner__main {
     min-height: 500px;
@@ -251,9 +245,9 @@
   }
 
 
-  /* =========================
+  /* 
      MOBILE ANNOUNCEMENT
-     ========================= */
+      */
 
   .custom-banner__announcement {
     padding: 10px 16px;
