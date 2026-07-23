@@ -1,28 +1,31 @@
-.custom-product-grid{
-    padding: 70px 4%;
-    max-width: 1400px;
-    margin: 0 auto;
-    box-sizing: border-box;
+.custom-product-grid {
+  padding: 80px 4%;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
-.custom-product-grid__title{
-    font-family: Georgia, serif;
-    font-size: 42px;
-    font-weight:400;
-    margin-bottom: 35px;
-    text-align: left;
+.custom-product-grid__title {
+  font-family: Georgia, serif;
+  font-size: 36px;
+  font-weight: 400;
+  margin-bottom: 30px;
+  text-align: left;
 }
+
 .custom-product-grid__items {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 16px;
   width: 100%;
 }
-.product-card{
-    position: relative;
-    width: 100%;
-    min-width: 0;
-    box-sizing: border-box;
+
+.product-card {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
+
 .product-card__trigger {
   width: 100%;
   border: 0;
@@ -33,6 +36,7 @@
   display: block;
   overflow: hidden;
 }
+
 .product-card__image {
   display: block;
   width: 100%;
@@ -40,30 +44,33 @@
   object-fit: cover;
   transition: transform 0.3s ease;
 }
-.product-card__trigger:hover .product-card__image{
-    transform: scale(1.03);
+
+.product-card__trigger:hover .product-card__image {
+  transform: scale(1.02);
 }
+
 .product-card__plus {
   position: absolute;
-  top: 18px;
-  right: 18px;
+  top: 16px;
+  right: 16px;
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: white;
-  color: #000;
+  background: #ffffff;
+  color: #000000;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
-  font-weight: bold;
+  font-size: 16px;
+  font-weight: 500;
   line-height: 1;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
   pointer-events: none;
   transition: transform 0.2s ease;
 }
-.product-card__trigger:hover .product-card__plus{
-    transform: scale(1.1);
+
+.product-card__trigger:hover .product-card__plus {
+  transform: scale(1.1);
 }
 /* Modal */
 
