@@ -350,3 +350,34 @@
   color: #000000;
 }
 
+
+
+/* Mobile View Grid */
+@media screen and (max-width: 749px) {
+
+  .custom-product-grid {
+    padding: 40px 16px;
+    max-width: 100%;
+  }
+
+  .custom-product-grid__title {
+    font-size: 28px;
+    margin-bottom: 24px;
+  }
+
+  .custom-product-grid__items {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .product-card__plus {
+    top: 8px;
+    right: 8px;
+    width: 24px;
+    height: 24px;
+    font-size: 14px;
+  }
+
+}
+
+
