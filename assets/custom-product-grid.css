@@ -288,10 +288,10 @@
 .custom-dropdown__item {
   padding: 12px 15px;
   font-size: 14px;
-  cursor: pointer;
-  text-align: center;
+   text-align: center;
   border-bottom: 1px solid #eee;
   transition: background-color 0.15s ease, color 0.15s ease;
+  cursor: pointer;
 }
 
 .custom-dropdown__item:last-child {
@@ -337,4 +337,17 @@
     color: #fff;
 }   
 
+.modal-option-select option:hover,
+.modal-option-select option:focus,
+.modal-option-select option:active,
+.modal-option-select option:checked {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+/* Chrome/Edge override to clear default blue highlight */
+.modal-option-select option:-internal-list-box option:checked {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
 
