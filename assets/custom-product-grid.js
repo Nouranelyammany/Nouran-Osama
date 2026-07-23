@@ -21,16 +21,22 @@ triggers.forEach((trigger) => {
     trigger.addEventListener('click', () =>{
         const card = trigger.closest('.product-card');
         const productDataElement = card.querySelector('.product-data');
-        currentProduct= JSON.parse(productDataElement.textContent);
-        openModal(currentProduct);
+       try {
+                currentProduct = JSON.parse(productDataElement.textContent);
+                openModal(currentProduct);
+            } catch (err) {
+                console.error("Failed to parse product JSON:", err);
+            }
     });
 });
 function openModal(product){
-    modalImage.src = product.featured_image;
+    modalImage.src = product.featured_image || product.featured_media?.src || '';
     modalImage.alt = product.title;
     modalTitle.textContent = product.title;
-    modalPrice.textContent = product.price;
-    modalDescription.textContent =product.description;
+    modalPrice.textContent =typeof product.price === 'number'
+    ? `$${(product.price / 100).toFixed(2)}` 
+            : product.price;
+    modalDescription.textContent =product.description || '';
     cartMessage.textContent ='';
     selectedVariantId= null;
     selectedVariantObject= null;
@@ -42,7 +48,7 @@ function openModal(product){
 function closeModal(){
     modal.classList.remove('is-open');
     modal.setAttribute('aria-hidden', 'true');
-    document.body,style.overflow= '';
+    document.body.style.overflow= '';
 }
 closeButtons.forEach((button)=>{
     button.addEventListener('click', closeModal);
@@ -70,7 +76,7 @@ optionNames.forEach((optionName, optionIndex) =>{
     values.forEach((value) =>{
         const button =document.createElement('button');
         button.type = 'button';
-        button.classList.add('mpdal-option-button');
+        button.classList.add('modal-option-button');
         button.textContent =value;
         button.dataset.optionIndex =optionIndex;
         button.dataset.optionValue =value;
@@ -83,9 +89,11 @@ optionNames.forEach((optionName, optionIndex) =>{
 });
 }
 function getOptionNames(product){
-    if (product.options) return product.options;
+    if (product.options && Array.isArray(product.options) && typeof product.options[0] === 'string'){
+        return product.options; 
+    }
     
-    const firstVariant = product.variants[0];
+    const firstVariant = product.variants ? product.variants[0] : null;
     if (!firstVariant) return [];
     return firstVariant.options.map((_, index) => {
         if (index === 0) return 'color';
@@ -124,7 +132,7 @@ function findMatchingVariant(product) {
         return variant.options.every((option, index) => option === selectedOptions[index]);
     });
     if (matchingVariant) {
-        selectedVariantId = matchingVariant.id;
+        selectedVariantId = Number(matchingVariant.id);
         selectedVariantObject = matchingVariant;
         cartMessage.textContent = '';
     } else {
@@ -146,14 +154,14 @@ async function addProductToCart(variantObject) {
     try {
         let itemsToCart = [
             {
-                id: variantObject.id,
+                id: Number(variantObject.id),
                 quantity: 1
             }
         ];
-        const optionValuesLower = variantObject.options.map((opt) => opt.toLowerCase());
-        const hasBlack = optionValuesLower.includes('black');
-        const hasMedium = optionValuesLower.includes('medium') || optionValuesLower.includes('m');
-        const isBlackAndMedium = hasBlack && hasMedium;
+            const optionValuesLower = variantObject.options.map((opt) => String(opt).toLowerCase());
+            const hasBlack = optionValuesLower.includes('black');
+            const hasMedium = optionValuesLower.includes('medium') || optionValuesLower.includes('m');
+            const isBlackAndMedium = hasBlack && hasMedium;
         if (isBlackAndMedium) {
             try {
                 const jacketResponse = await fetch(
@@ -163,8 +171,8 @@ async function addProductToCart(variantObject) {
                     const jacketData = await jacketResponse.json();
                     if (jacketData.variants && jacketData.variants.length > 0) {
                         itemsToCart.push({
-                            id: jacketData.variants[0].id,
-                            quantity: 1
+                           id: Number(jacketData.variants[0].id),
+                                quantity: 1
                         });
                     } 
                 }
