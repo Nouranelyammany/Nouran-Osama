@@ -92,14 +92,24 @@
   z-index: 0;
 }
 
-/* FIXED DESKTOP CONTENT POSITION */
+/* =========================
+   DESKTOP HERO CONTENT
+   ========================= */
 
 .custom-banner__content {
   position: relative;
   z-index: 2;
+
   width: 100%;
-  max-width: 500px;
-  padding: 60px 0 60px 40%;
+  max-width: 600px;
+
+  /*
+    Moves the content to the right
+    without making the text area too narrow
+  */
+  margin-left: 35%;
+
+  padding: 60px 40px;
   box-sizing: border-box;
 }
 
@@ -213,6 +223,10 @@
   .custom-banner__content {
     width: 100%;
     max-width: none;
+
+    /* Reset desktop positioning */
+    margin-left: 0;
+
     padding: 30px 20px 35px;
     box-sizing: border-box;
   }
