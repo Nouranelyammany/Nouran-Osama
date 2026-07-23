@@ -56,37 +56,94 @@ closeButtons.forEach((button)=>{
 
  /* *Dynamic option button
  * variant options for color and size */
-function renderVariants(product){
+function renderVariants(product) {
     modalOptions.innerHTML = '';
-    if (product.variants.length === 1 && product.variants[0].title.includes('Default')){
+/* If the product has only one default variant*/
+    if (
+        product.variants.length === 1 &&
+        product.variants[0].title.includes('Default')
+    ) {
         selectedVariantId = product.variants[0].id;
         selectedVariantObject = product.variants[0];
         return;
     }
+    const optionNames = getOptionNames(product);
+    optionNames.forEach((optionName, optionIndex) => {
+        const wrapper = document.createElement('div');
+        wrapper.classList.add('modal-option-row');
+        const label = document.createElement('p');
+        label.classList.add('modal-option-label');
+        label.textContent = optionName;
+        wrapper.appendChild(label);
+        const values = getUniqueOptionValues(
+            product.variants,
+            optionIndex
+        );
 
-const optionNames = getOptionNames(product);
-optionNames.forEach((optionName, optionIndex) =>{
-    const wrapper =document.createElement('div');
-    wrapper.classList.add('modal-option-row');
-    const label = document.createElement('P');
-    label.classList.add('modal-option-label');
-    label.textContent = optionName;
-    wrapper.appendChild(label);
-    const values = getUniqueOptionValues(product.variants, optionIndex);
-    values.forEach((value) =>{
-        const button =document.createElement('button');
-        button.type = 'button';
-        button.classList.add('modal-option-button');
-        button.textContent =value;
-        button.dataset.optionIndex =optionIndex;
-        button.dataset.optionValue =value;
-        button.addEventListener('click', ()=>{
-            selectOption(optionIndex, value, product);
-        });
-        wrapper.appendChild(button);
+        /* SIZE → SELECT DROPDOWN*/
+        if (optionName.toLowerCase() === 'size') {
+            const select = document.createElement('select');
+            select.classList.add('modal-option-select');
+            select.dataset.optionIndex = optionIndex;
+            const placeholder = document.createElement('option');
+            placeholder.value = '';
+            placeholder.textContent = 'Choose your size';
+            placeholder.disabled = true;
+            placeholder.selected = true;
+            select.appendChild(placeholder);
+
+            /* Add size options*/
+            values.forEach((value) => {
+
+                const option = document.createElement('option');
+                option.value = value;
+                option.textContent = value;
+                select.appendChild(option);
+
+            });
+
+            // When user selects a size
+            select.addEventListener('change', () => {
+
+                selectOption(
+                    optionIndex,
+                    select.value,
+                    product
+                );
+
+            });
+            wrapper.appendChild(select);
+
+        }
+
+        // COLOR → BUTTONS
+        else {
+
+            values.forEach((value) => {
+
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.classList.add('modal-option-button');
+                button.textContent = value;
+                button.dataset.optionIndex = optionIndex;
+                button.dataset.optionValue = value;
+                button.addEventListener('click', () => {
+                    selectOption(
+                        optionIndex,
+                        value,
+                        product
+                    );
+
+                });
+
+                wrapper.appendChild(button);
+
+            });
+
+        }
+        modalOptions.appendChild(wrapper);
+
     });
-    modalOptions.appendChild(wrapper);
-});
 }
 function getOptionNames(product){
     if (product.options && Array.isArray(product.options) && typeof product.options[0] === 'string'){
