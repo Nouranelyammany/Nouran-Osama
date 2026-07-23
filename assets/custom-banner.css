@@ -46,15 +46,23 @@
   text-decoration: none;
   font-weight: 600;
   letter-spacing: 0.5px;
-  transition: transform 0.2s ease, background-color 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    background-color 0.3s ease,
+    color 0.3s ease;
   box-sizing: border-box;
 }
 
-.custom-banner__top-button:hover,
-.custom-banner__main-button:hover {
+.custom-banner__top-button:hover {
+  background-color: #111111;
+  color: #ffffff;
   transform: translateX(3px);
 }
 
+.custom-banner__main-button:hover {
+  background-color: #fff000;
+  color: #111111;
+  transform: translateX(3px);}
 /* 
    TOP BUTTON
     */
@@ -146,9 +154,9 @@
   font-size: 13px;
 }
 
-/* =========================
+/* 
    ANNOUNCEMENT BAR
-   ========================= */
+   */
 
 .custom-banner__announcement {
   text-align: center;
