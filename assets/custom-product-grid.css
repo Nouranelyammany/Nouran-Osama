@@ -141,7 +141,7 @@
     font-size: 17px;
     font-weight: 400;
     margin-bottom: 20px;
-    top: 10px;
+    transform: translateY(20px);
 }
 .product-modal__details > p {
     margin-bottom: 15px ;
