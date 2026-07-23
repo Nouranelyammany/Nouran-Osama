@@ -165,7 +165,7 @@ async function addProductToCart(variantObject) {
         if (isBlackAndMedium) {
             try {
                 const jacketResponse = await fetch(
-                    `${window.Shopify.routes.root}products/soft-winter-jacket.js`
+                    `${window.Shopify.routes.root}products/dark-winter-jacket.js`
                 );
                 if (jacketResponse.ok) {
                     const jacketData = await jacketResponse.json();
