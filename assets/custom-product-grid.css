@@ -174,8 +174,6 @@
 .product-modal__product-info{
     display: grid;
     grid-template-columns: 140px 1 fr;
-    gap: 12px;
-    margin-bottom: 15px;
 }
 .product-modal__arrow{
     font-size: 25px;
