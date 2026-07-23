@@ -180,18 +180,10 @@
 .product-modal__arrow{
     font-size: 25px;
 }
-.product-modal__options {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  margin-bottom: 20px;
-}
-
 .modal-option-row {
   display: flex;
   flex-direction: column;
 }
-
 .modal-option-label {
   margin-bottom: 8px;
   font-size: 14px;
@@ -200,19 +192,16 @@
   font-weight: 400;
   color: #333;
 }
-
-/* Color Buttons Group (Side-by-side 50/50 layout) */
 .modal-option-buttons-group {
   display: grid;
   grid-template-columns: 1fr 1fr;
   width: 100%;
 }
-
 .modal-option-button {
   width: 100%;
   box-sizing: border-box;
   padding: 12px 16px;
-  border: 1px solid #000000;
+  border: 1px solid #000;
   background: #ffffff;
   color: #000000;
   font-size: 15px;
@@ -221,23 +210,36 @@
   transition: all 0.2s ease;
   text-align: center;
 }
-
-/* Share middle border seamlessly */
 .modal-option-buttons-group .modal-option-button:first-child {
   border-right: none;
 }
 
-.modal-option-button.is-selected {
-  background: #000000;
-  color: #ffffff;
+.modal-option-row:has(.modal-option-button){
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
 }
-
-/* Custom Size Dropdown UI */
+.modal-option-row:has(.modal-option-label){
+    grid-column: 1 / -1;
+}
+.modal-option-button{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border: 1px solid #222;
+    background: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-right: 0;
+}
+.modal-option-button.is-selected{
+    background: #000000;
+    color: white;
+}
 .custom-dropdown {
   position: relative;
   width: 100%;
 }
-
 .custom-dropdown__trigger {
   width: 100%;
   height: 48px;
@@ -251,7 +253,6 @@
   cursor: pointer;
   box-sizing: border-box;
 }
-
 .custom-dropdown__arrow {
   font-size: 12px;
   transition: transform 0.2s ease;
@@ -290,4 +291,40 @@
 .custom-dropdown__item:hover,
 .custom-dropdown__item.is-selected {
   background-color: #000000;
-  color: #ffffff;}
+  color: #ffffff;
+}
+
+.modal-option-select {
+    width: 100%;
+    height: 48px;
+    padding: 0 15px;
+    border: 1px solid #222;
+    background: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+.product-modal__options {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.modal-option-row:nth-child(1) {
+    order: 2;
+}
+
+.modal-option-row:nth-child(2) {
+    order: 1;
+}
+.modal-option-select:focus{
+    outline: none;
+    border-color: #000;
+    box-shadow: none;
+}
+.modal-option-select option:hover{
+    background-color: #000;
+    color: #fff;
+}   
+
+
