@@ -214,13 +214,15 @@
       */
 
   .custom-banner__main {
-    min-height: 500px;
+    min-height: 480px; 
     display: flex;
-    align-items: flex-end;
+    align-items: flex-end; 
+    position: relative;
   }
 
   .custom-banner__image {
     object-position: center;
+    object-position: center top;
   }
 
   .custom-banner__content {
@@ -229,15 +231,17 @@
 
     /* Reset desktop positioning */
     margin-left: 0;
-
-    padding: 30px 20px 35px;
+    transform: translateY(0);
+    padding: 40px 20px 30px;
     box-sizing: border-box;
+
+  
   }
 
   .custom-banner__content h1 {
-    font-size: 38px;
-    line-height: 1.1;
-    margin-bottom: 14px;
+    font-size: 32px; 
+    line-height: 1.15;
+    margin-bottom: 12px;
   }
 
   .custom-banner__content p {
