@@ -194,7 +194,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 8px;
 }
-.modal-option-row:has(.modal-option-label).modal-option-label{
+.modal-option-row:has(.modal-option-label){
     grid-column: 1 / -1;
 }
 .modal-option-button{
