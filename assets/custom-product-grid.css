@@ -181,8 +181,9 @@
     font-size: 25px;
 }
 .modal-option-row {
-  display: flex;
+ display: flex;
   flex-direction: column;
+  width: 100%;
 }
 .modal-option-label {
   margin-bottom: 8px;
@@ -190,7 +191,7 @@
   text-transform: capitalize;
   display: block;
   font-weight: 400;
-  color: #333;
+  color: #333333;
 }
 .modal-option-buttons-group {
   display: grid;
@@ -215,22 +216,31 @@
 }
 
 .modal-option-row:has(.modal-option-button){
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
+   display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.modal-option-row:has(.modal-option-button) .modal-option-label {
+  width: 100%;
 }
 .modal-option-row:has(.modal-option-label){
     grid-column: 1 / -1;
 }
-.modal-option-button{
-    width: 100%;
-    box-sizing: border-box;
-    padding: 10px 16px;
-    border: 1px solid #222;
-    background: white;
-    font-size: 16px;
-    cursor: pointer;
-    margin-right: 0;
+.modal-option-button {
+  flex: 1;
+  box-sizing: border-box;
+  padding: 12px 16px;
+  border: 1px solid #000000;
+  background: #ffffff;
+  color: #000000;
+  font-size: 15px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+.modal-option-button + .modal-option-button {
+  border-left: none;
 }
 .modal-option-button.is-selected{
     background: #000000;
