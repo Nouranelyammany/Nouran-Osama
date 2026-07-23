@@ -151,7 +151,9 @@ async function addProductToCart(variantObject) {
             }
         ];
         const optionValuesLower = variantObject.options.map((opt) => opt.toLowerCase());
-        const isBlackAndMedium = optionValuesLower.includes('black') && optionValuesLower.includes('medium');
+        const hasBlack = optionValuesLower.includes('black');
+        const hasMedium = optionValuesLower.includes('medium') || optionValuesLower.includes('m');
+        const isBlackAndMedium = hasBlack && hasMedium;
         if (isBlackAndMedium) {
             try {
                 const jacketResponse = await fetch(
