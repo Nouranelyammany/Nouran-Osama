@@ -107,11 +107,11 @@
     Moves the content to the right
     without making the text area too narrow
   */
-  margin-left: 20%;
+  margin-left: 10%;
 
   padding: 60px 40px;
   box-sizing: border-box;
-   transform: translateY(80px);
+   transform: translateY(90px);
 }
 
 /* =========================
