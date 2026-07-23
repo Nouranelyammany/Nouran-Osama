@@ -28,7 +28,7 @@ class="custom-banner__top-button"
 {{section.settings.heading}}
 </h1>
 <p>
-{{section.settings.description}}
+{{section.settings.description | newline_to_br}}
 </p>
 <a href="{{section.settings.main_button_link}}"
 class="custom-banner__main-button"
@@ -95,7 +95,7 @@ class="custom-banner__main-button"
         "type": "textarea",
         "id": "description",
          "label": "Description",
-         "default": "Discover Joy: Your Ultimates Holiday Gift Destination"
+         "default": "Discover Joy: Your Ultimates Holiday Gift Destination.Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season."
     },
     {
         "type": "text",
