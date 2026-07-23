@@ -167,34 +167,91 @@ function getUniqueOptionValues(variants, optionIndex) {
 * evaluate currently selected options against the product variants  array to
 *identify active variants Id */
 function selectOption(optionIndex, value, product) {
-    const buttons = modalOptions.querySelectorAll(`[data-option-index="${optionIndex}"]`);
-    buttons.forEach((button) => button.classList.remove('is-selected'));
-    const selectedButton = modalOptions.querySelector(
-        `[data-option-index="${optionIndex}"][data-option-value="${value}"]`
+
+    // Remove the selected state from color buttons
+    const buttons = modalOptions.querySelectorAll(
+        `.modal-option-button[data-option-index="${optionIndex}"]`
     );
+
+    buttons.forEach((button) => {
+        button.classList.remove('is-selected');
+    });
+
+    // Add selected state to the clicked color button
+    const selectedButton = modalOptions.querySelector(
+        `.modal-option-button[data-option-index="${optionIndex}"][data-option-value="${value}"]`
+    );
+
     if (selectedButton) {
         selectedButton.classList.add('is-selected');
-    
-    }
-    findMatchingVariant(product);
+}
 
+findMatchingVariant(product);
 }
 function findMatchingVariant(product) {
+
     const selectedOptions = [];
-    const selectedButtons = modalOptions.querySelectorAll('.is-selected');
-    selectedButtons.forEach((button) => {
-        selectedOptions.push(button.dataset.optionValue);
+
+    const optionNames = getOptionNames(product);
+
+    optionNames.forEach((optionName, optionIndex) => {
+
+        // Get selected color button
+        const selectedButton = modalOptions.querySelector(
+            `.modal-option-button[data-option-index="${optionIndex}"].is-selected`
+        );
+
+        // Get selected size dropdown
+        const selectedSelect = modalOptions.querySelector(
+            `.modal-option-select[data-option-index="${optionIndex}"]`
+        );
+
+        if (selectedButton) {
+            selectedOptions[optionIndex] =
+                selectedButton.dataset.optionValue;
+        }
+
+        if (selectedSelect && selectedSelect.value) {
+            selectedOptions[optionIndex] =
+                selectedSelect.value;
+        }
     });
-    const matchingVariant = product.variants.find((variant) => {
-        return variant.options.every((option, index) => option === selectedOptions[index]);
-    });
-    if (matchingVariant) {
-        selectedVariantId = Number(matchingVariant.id);
-        selectedVariantObject = matchingVariant;
-        cartMessage.textContent = '';
-    } else {
+
+    // Do not search for a variant until all options are selected
+    if (selectedOptions.length !== product.variants[0].options.length ||
+        selectedOptions.includes(undefined)) {
+
         selectedVariantId = null;
         selectedVariantObject = null;
+        return;
+    }
+
+    const matchingVariant = product.variants.find((variant) => {
+
+        return variant.options.every((option, index) => {
+
+            return option === selectedOptions[index];
+
+        });
+
+    });
+
+    if (matchingVariant) {
+
+        selectedVariantId = Number(matchingVariant.id);
+
+        selectedVariantObject = matchingVariant;
+
+        cartMessage.textContent = '';
+
+    } else {
+
+        selectedVariantId = null;
+
+        selectedVariantObject = null;
+
+        cartMessage.textContent =
+            'This combination is not available.';
     }
 }
 addToCartButton.addEventListener('click', async () => {
