@@ -189,13 +189,23 @@
     text-transform: capitalize;
     display: block;
 }
+.modal-option-row:has(.modal-option-button){
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+.modal-option-row:has(.modal-option-label){
+    grid-column: 1 / -1;
+}
 .modal-option-button{
+    width: 100%;
+    box-sizing: border-box;
     padding: 10px 16px;
     border: 1px solid #222;
     background: white;
     font-size: 16px;
     cursor: pointer;
-    margin-right: 4px;
+    margin-right: 0;
 }
 .modal-option-button.is-selected{
     background: #000;
