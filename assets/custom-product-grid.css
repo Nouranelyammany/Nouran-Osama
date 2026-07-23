@@ -337,17 +337,15 @@
     color: #fff;
 }   
 
-.modal-option-select option:hover,
-.modal-option-select option:focus,
-.modal-option-select option:active,
-.modal-option-select option:checked {
+.modal-option-select option:hover {
   background-color: #000000 !important;
   color: #ffffff !important;
+  box-shadow: 0 0 10px #000000 inset; /* Helps override Chrome default highlight */
 }
 
-/* Chrome/Edge override to clear default blue highlight */
-.modal-option-select option:-internal-list-box option:checked {
-  background-color: #000000 !important;
-  color: #ffffff !important;
+/* Keep unchecked options normal when not hovering */
+.modal-option-select option:not(:hover) {
+  background-color: #ffffff;
+  color: #000000;
 }
 
