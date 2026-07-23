@@ -72,8 +72,11 @@ render product information, variants, and the correct variant ID for cart action
             type="button"
             class="product-modal__close"
             data-modal-close
-            >×
+            >
+            ×
             </button>
+            <!-- Product image and basic information -->
+            <div class="product-modal__product-info">
             <div class="product-modal__image-wrapper">
             <img
             src=""
@@ -85,25 +88,28 @@ render product information, variants, and the correct variant ID for cart action
             <h2 data-modal-title></h2>
             <p data-modal-price></p>
             <div data-modal-description></div>
-            <div
-            class="product-modal__options"
-            data-modal-options
-            >
+             </div>
+             </div>
+             <!-- Product variants are generated dynamically by JavaScript -->
+             <div
+             class="product-modal__options"
+             data-modal-options
+             ></div>
+             <!-- Add selected variant to cart -->
+             <button
+             type="button"
+             class="product-modal__add"
+             data-add-to-cart
+             >
+             <span>ADD TO CART</span>
+             <span class="product-modal__arrow">→</span>
+             </button>
+             <p
+             class="product-modal__message"
+             data-cart-message
+             ></p>
             </div>
-            <button
-            type="button"
-            class="product-modal__add"
-            data-add-to-cart
-            >
-            ADD TO CART
-            </button>
-            <p
-            class="product-modal__message"
-            data-cart-message
-            ></p>
-            </div>
-            </div>
-            </div>
+        </div>
             </section>
             <script src="{{ 'custom-product-grid.js' | asset_url }}" defer></script>
 
