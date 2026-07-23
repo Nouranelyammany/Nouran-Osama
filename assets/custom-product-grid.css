@@ -210,6 +210,18 @@
     font-size: 16px;
     cursor: pointer;
 }
+.product-modal__options {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-option-row:nth-child(1) {
+    order: 2;
+}
+
+.modal-option-row:nth-child(2) {
+    order: 1;
+}
 
 
 
