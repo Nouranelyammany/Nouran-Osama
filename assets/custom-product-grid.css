@@ -148,10 +148,15 @@
 
 .product-modal__add {
   width: 100%;
-  padding: 18px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 45px;
   border: 0;
-  background: #111111;
+  background: #000;
   color: white;
+  font-size: 15px;
   font-weight: bold;
   letter-spacing: 1px;
   cursor: pointer;
@@ -171,6 +176,28 @@
     grid-template-columns: 140px 1 fr;
     gap: 12px;
     margin-bottom: 15px;
+}
+.product-modal__arrow{
+    font-size: 25px;
+}
+.modal-option-row{
+    margin-bottom: 18 px;
+}
+.modal-option-label{
+    margin-bottom: 8 px;
+    font-size: 14px;
+    text-transform: capitalize;
+}
+.modal-option-button{
+    padding: 10px 16px;
+    border: 1px solid #222;
+    background: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+.modal-option-button.is-selected{
+    background: #000;
+    color: white;
 }
 
 
