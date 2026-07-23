@@ -37,12 +37,13 @@ Expose the selected product data as JSON so the JavaScript modal can dynamically
 render product information, variants, and the correct variant ID for cart actions.
 {%- endcomment -%}
  <script type="application/json" class="product-data">
- {
+{
     "id": {{ product.id | json }},
     "title": {{ product.title | json }},
     "description": {{ product.description | strip_html | json }},
     "featured_image": {{ product.featured_image | image_url: width: 1000 | json }},
     "price": {{ product.price | money | json }},
+    "options": {{ product.options | json }},
     "variants": [
         {% for variant in product.variants %}
         {
@@ -50,13 +51,13 @@ render product information, variants, and the correct variant ID for cart action
             "title": {{ variant.title | json }},
             "available": {{ variant.available | json }},
             "options": {{ variant.options | json }}
-            }
-            {% unless forloop.last %},
-            {% endunless %}
-            {% endfor %}
-            ]
-            }
-            </script>
+        }
+        {% unless forloop.last %},
+        {% endunless %}
+        {% endfor %}
+    ]
+}
+</script>
             </article>
             {% endif %}
             {% endfor %}

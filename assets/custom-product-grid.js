@@ -81,7 +81,7 @@ function renderVariants(product) {
         );
 
         /* option1 =size ->dropdown*/
-        if (optionName.toLowerCase() === 0) {
+        if (optionIndex === 0) {
             const select = document.createElement('select');
             select.classList.add('modal-option-select');
             select.dataset.optionIndex = optionIndex;
@@ -116,7 +116,7 @@ function renderVariants(product) {
 
         }
 
-        // Option2= COLOR → BUTTONS
+        //  COLOR → BUTTONS
         else {
 
             values.forEach((value) => {
@@ -145,17 +145,29 @@ function renderVariants(product) {
 
     });
 }
-function getOptionNames(product){
-    if (product.options && Array.isArray(product.options) && typeof product.options[0] === 'string'){
-        return product.options; 
+function getOptionNames(product) {
+    if (
+        product.options &&
+        Array.isArray(product.options) &&
+        typeof product.options[0] === 'string'
+    ) {
+        return product.options;
     }
-    
-    const firstVariant = product.variants ? product.variants[0] : null;
+
+    const firstVariant = product.variants
+        ? product.variants[0]
+        : null;
+
     if (!firstVariant) return [];
+
     return firstVariant.options.map((_, index) => {
-        if (index === 0) return 'color';
-        if (index === 1) return 'size';
+
+        if (index === 0) return 'size';
+
+        if (index === 1) return 'color';
+
         return `Option ${index + 1}`;
+
     });
 }
 function getUniqueOptionValues(variants, optionIndex) {
