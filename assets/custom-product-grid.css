@@ -1,0 +1,406 @@
+
+
+/* Outer container for the custom product section */
+
+.custom-product-grid {
+  padding: 80px 4%;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+/* Section main heading styling */
+.custom-product-grid__title {
+  font-family: Georgia, serif;
+  font-size: 36px;
+  font-weight: 400;
+  margin-bottom: 30px;
+  text-align: left;
+}
+/* Desktop layout: 3 columns grid with equal spacing */
+.custom-product-grid__items {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  width: 100%;
+}
+
+
+/* Card wrapper component */
+.product-card {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+/* Clickable trigger button wrapping the card media */
+.product-card__trigger {
+  width: 100%;
+  border: 0;
+  padding: 0;
+  position: relative;
+  cursor: pointer;
+  background: none;
+  display: block;
+  overflow: hidden;
+}
+/* Card main product image with square aspect ratio */
+.product-card__image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+/* Slight zoom effect on card image hover */
+.product-card__trigger:hover .product-card__image {
+  transform: scale(1.02);
+}
+/* Floating "Quick Add" plus (+) icon badge on top right of image */
+.product-card__plus {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  pointer-events: none;
+  transition: transform 0.2s ease;
+}
+
+.product-card__trigger:hover .product-card__plus {
+  transform: scale(1.1);
+}
+
+
+/* Hidden modal container fixed over viewport */
+
+.product-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.product-modal.is-open {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-modal__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+/* Main inner modal popup box */
+.product-modal__content {
+  position: relative;
+  z-index: 1;
+  width:360px;
+  max-width: calc(100% - 30px);
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #ffffff;
+  padding: 40px 20px 28px;
+  display: block;
+  grid-template-columns: 1fr 1fr;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+.product-modal__close {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  z-index: 2;
+  border: 0;
+  background: transparent;
+  font-size: 24px;
+  cursor: pointer;
+  line-height: 1;
+}
+.product-modal__image-wrapper {
+  width: 140px;
+  height: 160px;
+}
+.product-modal__image-wrapper img {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  display: block;
+}
+.product-modal__details {
+   padding: 0;
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+   transform: translateY(-20px);
+}
+.product-modal__details h2 {
+
+    margin: 0 0 20px;
+    font-size: 17px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    transform: translateY(20px);
+}
+.product-modal__details > p {
+    margin-bottom: 15px ;
+
+}
+.product-modal__details [data-modal-description]{
+  margin-bottom: 20px;
+  font-size: 13px;
+  line-height: 1.2;
+  overflow-wrap: break-word;
+  word-break: normal;
+
+}
+
+
+/* Main "Add to Cart" button inside modal */
+.product-modal__add {
+  width: 100%;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 45px;
+  border: 0;
+  background: #000;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.product-modal__add:hover{
+    background-color: #333333;
+
+}
+
+.product-modal__message {
+  margin-top: 15px;
+  font-size: 14px;
+}
+.product-modal__product-info {
+  display: grid;
+  grid-template-columns: 140px minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+  margin-bottom: 15px;
+}
+.product-modal__arrow{
+    font-size: 25px;
+}
+.modal-option-row {
+ display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.modal-option-label {
+  margin-bottom: 8px;
+  font-size: 14px;
+  text-transform: capitalize;
+  display: block;
+  font-weight: 400;
+  color: #333333;
+}
+.modal-option-buttons-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+}
+.modal-option-button {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 16px;
+  border: 1px solid #000;
+  background: #ffffff;
+  color: #000000;
+  font-size: 15px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+.modal-option-buttons-group .modal-option-button:first-child {
+  border-right: none;
+}
+
+.modal-option-row:has(.modal-option-button){
+   display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.modal-option-row:has(.modal-option-button) .modal-option-label {
+  width: 100%;
+}
+.modal-option-row:has(.modal-option-label){
+    grid-column: 1 / -1;
+}
+.modal-option-button {
+  flex: 1;
+  box-sizing: border-box;
+  padding: 12px 16px;
+  border: 1px solid #000000;
+  background: #ffffff;
+  color: #000000;
+  font-size: 15px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+.modal-option-button + .modal-option-button {
+  border-left: none;
+}
+.modal-option-button.is-selected{
+    background: #000000;
+    color: white;
+}
+.custom-dropdown {
+  position: relative;
+  width: 100%;
+}
+.custom-dropdown__trigger {
+  width: 100%;
+  height: 48px;
+  padding: 0 15px;
+  border: 1px solid #000000;
+  background: #ffffff;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+.custom-dropdown__arrow {
+  font-size: 12px;
+  transition: transform 0.2s ease;
+}
+
+.custom-dropdown.is-open .custom-dropdown__arrow {
+  transform: rotate(180deg);
+}
+
+.custom-dropdown__menu {
+  display: none;
+  border: 1px solid #000000;
+  border-top: none;
+  background: #ffffff;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.custom-dropdown.is-open .custom-dropdown__menu {
+  display: block;
+}
+
+.custom-dropdown__item {
+  padding: 12px 15px;
+  font-size: 14px;
+   text-align: center;
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  cursor: pointer;
+}
+
+.custom-dropdown__item:last-child {
+  border-bottom: none;
+}
+
+.custom-dropdown__item:hover,
+.custom-dropdown__item.is-selected {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.modal-option-select {
+    width: 100%;
+    height: 48px;
+    padding: 0 15px;
+    border: 1px solid #222;
+    background: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+/* Container wrapping all variant options inside modal */
+.product-modal__options {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+/* Reordering option rows visually using flex order */
+
+.modal-option-row:nth-child(1) {
+    order: 2;
+}
+
+.modal-option-row:nth-child(2) {
+    order: 1;
+}
+.modal-option-select:focus{
+    outline: none;
+    border-color: #000;
+    box-shadow: none;
+}  
+.modal-option-select option:hover {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 10px #000000 inset; 
+}
+
+.modal-option-select option:not(:hover) {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+
+
+/* Mobile View Grid */
+@media screen and (max-width: 749px) {
+
+  .custom-product-grid {
+    padding: 40px 16px;
+    max-width: 100%;
+  }
+
+  .custom-product-grid__title {
+    font-size: 28px;
+    margin-bottom: 24px;
+  }
+
+  .custom-product-grid__items {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .product-card__plus {
+    top: 8px;
+    right: 8px;
+    width: 24px;
+    height: 24px;
+    font-size: 14px;
+  }
+
+}
+
+
