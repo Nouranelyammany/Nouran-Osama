@@ -80,8 +80,8 @@ function renderVariants(product) {
             optionIndex
         );
 
-        /* SIZE → SELECT DROPDOWN*/
-        if (optionName.toLowerCase() === 'size') {
+        /* option1 =size ->dropdown*/
+        if (optionName.toLowerCase() === 0) {
             const select = document.createElement('select');
             select.classList.add('modal-option-select');
             select.dataset.optionIndex = optionIndex;
@@ -116,7 +116,7 @@ function renderVariants(product) {
 
         }
 
-        // COLOR → BUTTONS
+        // Option2= COLOR → BUTTONS
         else {
 
             values.forEach((value) => {
